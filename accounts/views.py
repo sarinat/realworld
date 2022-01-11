@@ -36,15 +36,13 @@ def login(request):
     else:
         return render(request, 'accounts/login.html')
 
-
-
 def register_user(request):
     form = RegisterForm()
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('/login')
 
 
     context = {'form':form}

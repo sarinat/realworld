@@ -535,6 +535,10 @@ body{
 .register-inner .register-img{
     box-shadow: 0 10px 20px 0 rgba(5,16,44,.15);
 }
+.register-inner input{
+padding:12px 85px;
+}
+
 .registration{
     box-shadow: 0 10px 20px 0 rgba(5,16,44,.15);
 }
