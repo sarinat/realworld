@@ -9,6 +9,7 @@
 <section id="register">
 
     <div class="container" data-aos="zoom-in-up">
+        {% include 'messages.html' %}
       <div class="row">
       <div class="register-inner d-flex justify-content-center">
 
@@ -20,7 +21,9 @@
               <div class="register-content">
             <h1 class="fs-5 fw-bold ms-5 my-4">Login to your Account</h1>
             <div class="form-content">
-              <form>
+
+              <form method="post" action="">
+                  {% csrf_token %}
                 <div class="mb-3 ms-5">
                   <input type="text" class="form-control py-2" style="width: 80%;" id="exampleInputname1"  placeholder="Enter Username">
 
