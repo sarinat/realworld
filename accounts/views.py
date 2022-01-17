@@ -7,7 +7,7 @@ from django.contrib import messages, auth
 from accounts.auth import unauthenticated_user, admin_only, user_only
 from django.contrib.auth.decorators import login_required
 
-from accounts.forms import RegisterForm, LoginForm
+from accounts.forms import RegisterForm
 
 
 def homepage(request):
@@ -20,7 +20,6 @@ def homepage(request):
 @unauthenticated_user
 def login(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
         uname = request.POST['username']
         passwd = request.POST['password']
         user = auth.authenticate(username=uname, password=passwd)
@@ -34,13 +33,15 @@ def login(request):
                 return redirect('/admin')
         else:
             messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
-            return render(request, 'accounts/login.html', {'form_login': form} )
+            return render(request, 'accounts/login.html' )
     else:
         return render(request, 'accounts/login.html')
     context = {
-        'form_login': LoginForm
+
     }
     return render(request, 'accounts/login.html', context)
+
+
 
 def register_user(request):
     form = RegisterForm()
