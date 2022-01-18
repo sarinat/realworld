@@ -64,62 +64,66 @@
 
                         </div>
 
+                        {% if user.is_authenticated %}
+
                         <div class="collapse navbar-collapse log" id="navbarSupportedContent">
                             <ul class="navbar-nav mb-lg-0 ms">
 
-<!--                                <li class="nav-item ">-->
-<!--                                    <a class="btn nav-link a mt-2 position-relative">-->
-<!--                                        <i class="fa fa-heart-o" aria-hidden="true"></i>-->
-<!--&lt;!&ndash;                                        <span class="position-absolute top-0 mt-3 start-100 ms-1 translate-middle badge rounded-pill bg-danger">&ndash;&gt;-->
+                                <li class="nav-item ">
+                                    <a class="btn nav-link a mt-2 position-relative">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                        <span class="position-absolute top-0 mt-3 start-100 ms-1 translate-middle badge rounded-pill bg-danger">
+                  0</span>
+                                    </a>
 
-<!--                  </span>-->
-<!--                                    </a>-->
+                                </li>
 
-<!--                                </li>-->
-
-<!--                                <li class="nav-item">-->
-<!--                                    <a class="nav-link mt-2 a position-relative" href="#"><i class="fa fa-bell-o"-->
-<!--                                                                                             aria-hidden="true"></i>-->
-<!--                                        <span class="position-absolute top-0 mt-3 start-100 translate-middle badge rounded-pill bg-danger">-->
-<!--                        0-->
-<!--                      </span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-                                <!-- <li class="nav-item ms-3 dropdown">
-                                  <div class="action">
-                                      <div class="profile dropdown-toggle" onclick="menuToggle();">
-                                          <img src="images/art.jpg" alt=""/>
-                                      </div>
-                                      <div class="menu">
-                                          <h3>Ritika</h3>
-                                          <ul class="">
-                                              <li><i class="far fa-user"></i><a href="/my_profile">My Profile</a></li>
-                                              <li><i class="far fa-user-edit"></i><a href="/edit_profile">Edit Profile</a></li>
-                                              <li><i class="far fa-key"></i><a href="/password_change">Change Password</a></li>
-                                              <li><i class="far fa-shopping-bag"></i><a href="/kitchen/my_order">My Order</a></li>
-                                              <li><i class="far fa-question-circle"></i><a href="/kitchen/contact">Support</a></li>
-                                              <li><i class="fas fa-sign-out-alt"></i><a href="/logout">Logout</a></li>
-                                          </ul>
-                                      </div>
-                                  </div>
-                              </li> -->
+                                <li class="nav-item">
+                                    <a class="nav-link mt-2 a position-relative" href="#"><i class="fa fa-bell-o" aria-hidden="true"></i>
+                                        <span class="position-absolute top-0 mt-3 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                      </span>
+                                    </a>
+                                </li>
+<!--                                <li class="nav-item ms-3 dropdown">-->
+<!--                                  <div class="action">-->
+<!--                                      <div class="profile dropdown-toggle" onclick="menuToggle();">-->
+<!--                                          <img src="images/art.jpg" alt=""/>-->
+<!--                                      </div>-->
+<!--                                      <div class="menu">-->
+<!--                                          <h3>Ritika</h3>-->
+<!--                                          <ul class="">-->
+<!--                                              <li><i class="far fa-user"></i><a href="/my_profile">My Profile</a></li>-->
+<!--                                              <li><i class="far fa-user-edit"></i><a href="/edit_profile">Edit Profile</a></li>-->
+<!--                                              <li><i class="far fa-key"></i><a href="/password_change">Change Password</a></li>-->
+<!--                                              <li><i class="far fa-shopping-bag"></i><a href="/kitchen/my_order">My Order</a></li>-->
+<!--                                              <li><i class="far fa-question-circle"></i><a href="/kitchen/contact">Support</a></li>-->
+<!--                                              <li><i class="fas fa-sign-out-alt"></i><a href="/logout">Logout</a></li>-->
+<!--                                          </ul>-->
+<!--                                      </div>-->
+<!--                                  </div>-->
+<!--                              </li>-->
 
 
-<!--                                <li class="nav-item dropdown">-->
-<!--                                    <a class="nav-link" href="#" id="navbarDropdown" role="button"-->
-<!--                                       data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                        <img src="{% static 'images/t2.png' %}" alt="" class="rounded-circle"-->
-<!--                                             style="width: 48px; height: 48px;">-->
-<!--                                    </a>-->
-<!--                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                                        <li><a class="dropdown-item" href="#">My Profile</a></li>-->
-<!--                                        <li><a class="dropdown-item" href="#">Settings</a></li>-->
-<!--                                        <li><a class="dropdown-item" href="#">Sign out</a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="{% static 'images/t2.png' %}" alt="" class="rounded-circle"
+                                             style="width: 48px; height: 48px;">
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                                        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                                    </ul>
+                                </li>
+
+                                {% else %}
+
                                 <li class="nav-item btn-signup">
                              <a class="nav-link btn {{activate_login}}" href="/login">Sign In</a>
-                          </li>
+                           </li>
+                                {% endif %}
                             </ul>
                         </div>
 

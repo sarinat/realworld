@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 from accounts.forms import RegisterForm
 
-
+@user_only
 def homepage(request):
     context = {
         "activate_home": 'active'
@@ -27,7 +27,7 @@ def login(request):
             if not user.is_staff:
                 auth.login(request, user)
                 messages.success(request,"Welcome to Ebook")
-                return redirect("/")
+                return redirect("/frontend/homepage")
             elif user.is_staff:
                 auth.login(request, user)
                 return redirect('/admin')
@@ -42,7 +42,7 @@ def login(request):
     return render(request, 'accounts/login.html', context)
 
 
-
+@unauthenticated_user
 def register_user(request):
     form = RegisterForm()
     if request.method == "POST":
@@ -59,6 +59,13 @@ def register_user(request):
         'form':form
     }
     return render(request, 'accounts/register.html', context)
+
+
+@login_required
+def logout_user(request):
+    logout(request)
+    return redirect('/login')
+
 
 
 
