@@ -7,7 +7,8 @@ from django.contrib import messages, auth
 from accounts.auth import unauthenticated_user, admin_only, user_only
 from django.contrib.auth.decorators import login_required
 
-from accounts.forms import RegisterForm
+from accounts.forms import RegisterForm, ProfileForm
+
 
 @user_only
 def homepage(request):
@@ -67,8 +68,6 @@ def logout_user(request):
     return redirect('/login')
 
 
-
-
 @login_required
 @user_only
 def password_change_user(request):
@@ -88,3 +87,30 @@ def password_change_user(request):
         'activate_password': 'active'
     }
     return render(request, 'accounts/password_change_user.html', context)
+
+
+@login_required
+@user_only
+def profile(request):
+    user = request.user
+    # items = Cart.objects.filter(user=user)
+    # items_count = items.count()
+    profile = request.user.profile
+    # wishlist_items = Wishlist.objects.filter(user=user)
+    # wishlist_items_count = wishlist_items.count()
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Profile updated successfully")
+            return redirect('/profile')
+    context = {
+        'form': ProfileForm(instance=profile),
+        # 'activate_profile': 'active',
+        # 'items_count': items_count,
+        # 'wishlist_items_count': wishlist_items_count
+    }
+    return render(request, 'accounts/profile.html', context)
+
+
+
