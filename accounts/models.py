@@ -12,6 +12,6 @@ class Profile(models.Model):
     profile_pic = models.FileField(upload_to='static/profile', default='static/default_user.jpg')
     created_date = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.username
+    # def __str__(self):
+    #     return self.username
 
